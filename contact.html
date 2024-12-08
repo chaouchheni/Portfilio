@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navbar navbar-dark bg-dark" style="width: 130px; display: inline-block;">
+            <a class="navbar-brand ms-3 text-center" style="font-size: 200%;"><strong>PRO.<span style="color: rgb(217, 255, 0);">H</span></strong></a>
+        </div>
+        
+        <h1 style="display: inline-block; margin-left: 20px;">Contactez-moi</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="academic.html">Parcours académique</a></li>
+                <li><a href="skills.html">Compétences</a></li>
+                <li><a href="experience.html">Expériences professionnelles</a></li>
+                <li><a href="events.html">Evènements</a></li>
+                <li><a href="courses.html">Matières</a></li>
+                <li><a href="passions.html">Passions</a></li>
+                <li><a href="quiz.html">Quizz</a></li>
+                <li><a href="iit_testimonial.html">Témoignage de l'IIT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contact" class="py-5 mt-5 section-dark">
+            <div class="container">
+                <h2>Contactez-moi</h2>
+                <p>Si vous avez des questions, des commentaires ou des demandes, n'hésitez pas à remplir ce formulaire. Je vous répondrai dans les plus brefs délais.</p>
+                
+                <!-- Formulaire de contact -->
+                <form id="contactForm" action="#" method="post">
+                    <div class="row">
+                        <!-- Champ Nom -->
+                        <div class="col-md-6 mb-3">
+                            <label for="nom" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="nom" name="nom" required>
+                        </div>
+            
+                        <!-- Champ Prénom -->
+                        <div class="col-md-6 mb-3">
+                            <label for="prenom" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" required>
+                        </div>
+                    </div>
+            
+                    <!-- Champ Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+            
+                    <!-- Champ Message -->
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+            
+                    <!-- Bouton de soumission -->
+                    <button type="submit" class="btn btn-secondary">Envoyer</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- JavaScript pour EmailJS -->
+        <script type="text/javascript">
+            // Initialiser EmailJS avec votre User ID
+            emailjs.init("BkqX2H3eEYdNFKVPk"); // Remplacez "YOUR_USER_ID" par votre identifiant utilisateur EmailJS
+
+            // Fonction pour envoyer l'email
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Empêche l'envoi par défaut du formulaire
+                
+                // Récupérer les valeurs des champs
+                const nom = document.getElementById("nom").value;
+                const prenom = document.getElementById("prenom").value;
+                const email = document.getElementById("email").value;
+                const message = document.getElementById("message").value;
+
+                // Envoyer les données avec EmailJS
+                emailjs.send("heni22", "template_cc6kl7f", {
+                    from_name: nom + " " + prenom,
+                    from_email: email,
+                    message: message
+                }).then(
+                    function(response) {
+                        alert("Votre message a été envoyé avec succès!");
+                        document.getElementById("contactForm").reset(); // Réinitialise le formulaire
+                    },
+                    function(error) {
+                        alert("Erreur lors de l'envoi de votre message. Veuillez réessayer.");
+                        console.error("Erreur EmailJS:", error);
+                    }
+                );
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2024 Heni Chaouch. Tous droits réservés.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
